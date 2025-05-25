@@ -1,0 +1,44 @@
+---
+
+- name: Setup apps
+  hosts: local
+  tasks:
+    - name: "[PACMAN] Install packages"
+      become: yes
+      community.general.pacman:
+        name: 
+          - git
+          - neovim
+          - yay
+          - base-devel
+          - tldr
+          - stow
+          - xclip
+          - ranger
+        state: present
+        update_cache: true
+
+    - name: "[YAY] Check installed packages"
+      ansible.builtin.command: pacman -Qm
+      register: installed_packages
+
+    - name: "[YAY] Install packages"
+      become: false
+      ansible.builtin.command: "yay --noconfirm --noprogressbar --needed --sync {{ item }}"
+      when: item not in installed_packages
+      with_items:
+        - google-chrome
+        - nvim-packer-git
+        - antigen
+
+    - name: "[DOTFILES] Clone dotfiles repository"
+      ansible.builtin.git:
+        repo: 'git@github.com:pedroespindula/dotfiles'
+        dest: ~/dotfiles
+
+    - name: "[DOTFILES] Stow dotfiles"
+      ansible.builtin.shell: "stow --verbose -t /home/pedro * --adopt && git reset --hard"
+      args:
+        chdir: /home/pedro/dotfiles
+        creates: /home/pedro/.stow.lock
+
