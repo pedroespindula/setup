@@ -19,6 +19,7 @@
           - docker
           - tmux
           - mise
+          - unzip
         state: present
         update_cache: true
 
