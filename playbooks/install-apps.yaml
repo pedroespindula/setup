@@ -18,6 +18,7 @@
           - fzf
           - docker
           - tmux
+          - mise
         state: present
         update_cache: true
 
