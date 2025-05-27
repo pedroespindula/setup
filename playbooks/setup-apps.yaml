@@ -7,19 +7,19 @@
       become: yes
       community.general.pacman:
         name: 
-          - git
-          - neovim
-          - yay
           - base-devel
-          - tldr
-          - stow
-          - xclip
-          - ranger
-          - fzf
           - docker
-          - tmux
+          - fzf
+          - git
           - mise
+          - neovim
+          - ranger
+          - stow
+          - tldr
+          - tmux
           - unzip
+          - xclip
+          - yay
         state: present
         update_cache: true
 
@@ -32,7 +32,7 @@
       ansible.builtin.command: "yay --noconfirm --noprogressbar --needed --sync {{ item }}"
       when: item not in installed_packages
       with_items:
+        - antigen
         - google-chrome
         - nvim-packer-git
-        - antigen
         - tmuxinator
