@@ -15,6 +15,7 @@
           - stow
           - xclip
           - ranger
+          - fzf
         state: present
         update_cache: true
 
