@@ -16,6 +16,8 @@
           - xclip
           - ranger
           - fzf
+          - docker
+          - tmux
         state: present
         update_cache: true
 
@@ -31,15 +33,4 @@
         - google-chrome
         - nvim-packer-git
         - antigen
-
-    - name: "[DOTFILES] Clone dotfiles repository"
-      ansible.builtin.git:
-        repo: 'git@github.com:pedroespindula/dotfiles'
-        dest: ~/dotfiles
-
-    - name: "[DOTFILES] Stow dotfiles"
-      ansible.builtin.shell: "stow --verbose -t /home/pedro * --adopt && git reset --hard"
-      args:
-        chdir: /home/pedro/dotfiles
-        creates: /home/pedro/.stow.lock
-
+        - tmuxinator
