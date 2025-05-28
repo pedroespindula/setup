@@ -7,6 +7,7 @@
       become: yes
       community.general.pacman:
         name: 
+          - alacritty
           - base-devel
           - docker
           - fzf
@@ -26,12 +27,13 @@
 
     - name: "[YAY] Check installed packages"
       ansible.builtin.command: pacman -Qm
+      when: not first_install
       register: installed_packages
 
     - name: "[YAY] Install packages"
       become: false
       ansible.builtin.command: "yay --noconfirm --noprogressbar --needed --sync {{ item }}"
-      when: item not in installed_packages
+      when: first_install or item not in installed_packages
       with_items:
         - antigen
         - google-chrome
