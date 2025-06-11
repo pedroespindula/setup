@@ -18,3 +18,5 @@
         - name: rust
           cmd: cargo
           version: 1.87.0
+        - name: julia
+          version: 1.11.5
