@@ -9,10 +9,12 @@
         name: 
           - base-devel
           - docker
+          - fd
           - fzf
           - git
           - helm
           - kubectl
+          - lazygit
           - mise
           - neovim
           - ranger
