@@ -11,6 +11,8 @@
           - docker
           - fzf
           - git
+          - helm
+          - kubectl
           - mise
           - neovim
           - ranger
