@@ -1,13 +1,17 @@
 ---
 
+- name: Setup apps
+  hosts: local
+  gather_facts: yes
+  tasks:
     - name: "[BREW] Install packages"
-      when: ansible_distribution == "MacOSX"
       community.general.homebrew:
         name: 
           - alacritty
           - antigen
           - docker
           - fd
+          - font-jetbrains-mono-nerd-font
           - fzf
           - git
           - helm
@@ -17,11 +21,11 @@
           - neovim
           - ranger
           - ripgrep
+          - spotify
           - stow
           - tldr
           - tmux
           - tmuxinator
           - unzip
-          - spotify
           - xclip
         state: present
