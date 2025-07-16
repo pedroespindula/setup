@@ -1,0 +1,31 @@
+---
+- name: Setup repos
+  hosts: local
+  tasks:
+    - name: "[REPOS] Add repos directory"
+      ansible.builtin.file:
+        path: ~/repos
+        state: directory
+        mode: '0755'
+
+    - name: "[REPOS] Clone personal git repositories"
+      ansible.builtin.git:
+        repo: 'git@github.com:pedroespindula/{{ item }}'
+        dest: '~/repos/personal/{{ item }}'
+      with_items:
+        - resume
+
+    - name: "[REPOS] Clone datadog git repositories"
+      ansible.builtin.git:
+        repo: 'git@github.com:pedroespindula/{{ item }}'
+        dest: '~/repos/datadog/{{ item }}'
+      with_items:
+        - datadog-toolkit
+        - datadog-integration-gcp
+
+    - name: "[REPOS] Clone Cora git repositories"
+      ansible.builtin.git:
+        repo: 'git@github.com:corabank/{{ item }}'
+        dest: '~/repos/cora/{{ item }}'
+      with_items:
+        - platform-datadog

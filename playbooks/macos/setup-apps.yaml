@@ -1,0 +1,27 @@
+---
+
+    - name: "[BREW] Install packages"
+      when: ansible_distribution == "MacOSX"
+      community.general.homebrew:
+        name: 
+          - alacritty
+          - antigen
+          - docker
+          - fd
+          - fzf
+          - git
+          - helm
+          - kubectl
+          - lazygit
+          - mise
+          - neovim
+          - ranger
+          - ripgrep
+          - stow
+          - tldr
+          - tmux
+          - tmuxinator
+          - unzip
+          - spotify
+          - xclip
+        state: present

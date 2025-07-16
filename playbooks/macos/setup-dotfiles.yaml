@@ -1,0 +1,16 @@
+---
+
+- name: Setup dotfiles
+  hosts: local
+  tasks:
+    - name: "[DOTFILES] Clone dotfiles repository"
+      ansible.builtin.git:
+        repo: 'git@github.com:pedroespindula/dotfiles'
+        dest: ~/dotfiles
+
+    - name: "[DOTFILES] Stow dotfiles"
+      ansible.builtin.shell: "stow --verbose -t /Users/pedro * --adopt && git reset --hard"
+      args:
+        chdir: /Users/pedro/dotfiles
+        creates: /Users/pedro/.stow.lock
+
