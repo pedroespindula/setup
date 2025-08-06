@@ -20,3 +20,5 @@
           version: 1.87.0
         - name: julia
           version: 1.11.5
+        - name: terraform
+          version: 1.12.2

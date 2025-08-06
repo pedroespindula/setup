@@ -29,3 +29,9 @@
         dest: '~/repos/cora/{{ item }}'
       with_items:
         - platform-datadog
+        - platform-monitoring
+        - platform-gocd-pipelines
+        - zen
+        - platform-hoppscotch
+        - incident-manager
+        - platform-references

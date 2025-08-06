@@ -15,6 +15,7 @@
           - fzf
           - git
           - helm
+          - kind
           - kubectl
           - lazygit
           - mise

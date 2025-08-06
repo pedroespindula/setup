@@ -16,6 +16,7 @@
           - kubectl
           - lazygit
           - mise
+          - mos
           - neovim
           - ranger
           - ripgrep
